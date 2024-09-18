@@ -7,6 +7,30 @@ import java.lang.reflect.Method;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BankAccountTest {
+    @Test
+    void shouldBeBlockedAfterBlockIsCalled(){
+        BankAccount account = new BankAccount("a", "b");
+        account.block();
+        assertTrue(account.isBlocked());
+    }
+
+    @Test
+    void shouldReturnFirstNameThenSecondName(){
+        BankAccount account = new BankAccount("a", "b");
+        assertArrayEquals(new String[]{"a", "b"}, account.getFullName());
+    }
+
+    @Test
+    void shouldReturnNullAmountWhenNotActive(){
+        BankAccount account = new BankAccount("a", "b");
+        String expectedMessage = "Счёт не активирован.";
+
+
+        IllegalStateException ex = assertThrows(IllegalStateException.class, account::getAmount);
+
+        assertEquals(expectedMessage, ex.getMessage());
+        assertNull(account.getCurrency());
+    }
 
     @Test
     void shouldNotBeBlockedWhenCreated() {

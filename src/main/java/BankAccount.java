@@ -1,6 +1,15 @@
 import exceptions.InsufficientFundsException;
 import exceptions.NegativeAmountException;
 
+//130 - 2 категория
+// 105 - 1 категория
+// 170 - 4 категория
+// 60 - нет штрафа
+// 100 - граничное значение нет-1к
+// 140 - граничное значение 2к-3к
+// 90 - нет штрафа
+//125 - 2 категория
+
 public class BankAccount {
 
     private boolean isBlocked = false;
